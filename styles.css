@@ -22,12 +22,18 @@ body {
 }
 
 .container {
-    width: 960px;
-    height: 960px;
+    width: 964px;
+    height: 964px;
     border: 2px solid #000;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #grid-btn {
     background-color: #000;
     color: #fff;
+}
+
+div {
+    border: 1px solid #000;
 }
