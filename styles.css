@@ -38,3 +38,10 @@ body {
 div {
     border: 1px solid #000;
 }
+
+#btn-container {
+    width: 960px;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+}
