@@ -18,6 +18,15 @@ function gridCreation(num) {
 
 document.addEventListener("DOMContentLoaded", () => {
     gridCreation(16);
+    const boxes = grid.querySelectorAll(".grid-box")
+    console.log(boxes)
+
+    boxes.forEach(box => {
+            box.addEventListener("mousedown", (e) => {
+            e.target.style.backgroundColor = "#000"
+        })
+    })
+
 
     gridSizeBtn.addEventListener("click", () => {
     const gridSize = parseInt(prompt("Enter a number from 1-100 for the grid size"));
@@ -29,18 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Please enter a number within the range of 1-100");
     } else {
         gridCreation(gridSize);
+        const boxes = grid.querySelectorAll(".grid-box")
+        console.log(boxes)
+
+        boxes.forEach(box => {
+            box.addEventListener("mousedown", (e) => {
+                e.target.style.backgroundColor = "#000"
+            })
+        })
     }
 })
-
-const boxes = grid.querySelectorAll(".grid-box")
-console.log(boxes)
-
-boxes.forEach(box => {
-    box.addEventListener("mouseenter", (e) => {
-        e.target.style.backgroundColor = "#000"
-    })
-})
-
 })
 
 
