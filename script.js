@@ -65,6 +65,7 @@ randomBtn.addEventListener("click", () => {
 
 colorInput. addEventListener("input", () => {
     color = colorInput.value;
+    isRandom = false;
 })
 
 show()
