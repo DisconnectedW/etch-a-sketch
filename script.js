@@ -24,11 +24,22 @@ function gridCreation(num) {
     const boxes = grid.querySelectorAll(".grid-box")
     console.log(boxes)
 
-    boxes.forEach(box => {
+    document.addEventListener("change", () => {
+        if (sketchTypes[0].checked === true) {
+            boxes.forEach(box => {
+            box.addEventListener("mousedown", (e) => {
+                    e.target.style.backgroundColor = 
+                    `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+                })
+            })
+        } else if (sketchTypes[1].checked === true) {
+            boxes.forEach(box => {
             box.addEventListener("mouseenter", (e) => {
-                e.target.style.backgroundColor = 
-                `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
-        })
+                    e.target.style.backgroundColor = 
+                    `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+                })
+            })
+        }
     })
 }
 
