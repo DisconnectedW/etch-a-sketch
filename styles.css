@@ -58,3 +58,9 @@ body {
 ul li {
     list-style: none;
 }
+
+#color {
+    background-color: #efefef;
+    border: 1px solid #000;
+    border-radius: 10px;
+}

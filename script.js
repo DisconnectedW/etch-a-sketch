@@ -2,6 +2,7 @@ const grid = document.querySelector(".container");
 
 const gridSizeBtn = document.getElementById("grid-btn");
 const randomBtn = document.getElementById("random-btn");
+const colorInput = document. getElementById("color-picker")
 const resetBtn = document.getElementById("reset-btn");
 
 let isRandom = false;
@@ -54,11 +55,16 @@ function show() {
 
 resetBtn.addEventListener("click", () => {
     grid.innerHTML = "";
+    color = "#000"
     gridCreation(16);
 })
 
 randomBtn.addEventListener("click", () => {
     isRandom = !isRandom;
+})
+
+colorInput. addEventListener("input", () => {
+    color = colorInput.value;
 })
 
 show()
