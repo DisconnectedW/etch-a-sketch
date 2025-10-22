@@ -1,14 +1,11 @@
 const grid = document.querySelector(".container");
-const sketchModes = document.getElementById("sketch-modes")
-
-const sketchTypes = document.querySelectorAll(`#sketch-modes input[type="radio"]`)
 
 const gridSizeBtn = document.getElementById("grid-btn");
-const sketchMode = document.getElementById("mode-btn");
-const colorMode = document.getElementById("color-btn");
+const randomBtn = document.getElementById("random-btn");
 const resetBtn = document.getElementById("reset-btn");
 
-const isDisabled = true;
+let isRandom = false;
+let color = '#000'
 
 function gridCreation(num) {
     let i = 0;
@@ -24,28 +21,19 @@ function gridCreation(num) {
     const boxes = grid.querySelectorAll(".grid-box")
     console.log(boxes)
 
-    document.addEventListener("change", () => {
-        if (sketchTypes[0].checked === true) {
-            boxes.forEach(box => {
-            box.addEventListener("mousedown", (e) => {
-                    e.target.style.backgroundColor = 
-                    `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
-                })
+    boxes.forEach(box => {
+        box.addEventListener("mouseenter", (e) => {
+                e.target.style.backgroundColor = isRandom ? 
+                `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+                : color;
+                e.target.style.opacity = e.target.style.opacity ? Number(e.target.style.opacity) + 0.1 : 0.1;
             })
-        } else if (sketchTypes[1].checked === true) {
-            boxes.forEach(box => {
-            box.addEventListener("mouseenter", (e) => {
-                    e.target.style.backgroundColor = 
-                    `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
-                })
-            })
-        }
-    })
+        })
 }
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
+function show() {
     gridCreation(16);
     
     gridSizeBtn.addEventListener("click", () => {
@@ -62,19 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
         gridCreation(gridSize);
     }
 })
-})
+}
 
 resetBtn.addEventListener("click", () => {
     grid.innerHTML = "";
     gridCreation(16);
 })
 
-sketchMode.addEventListener("click", () => {
-    sketchModes.classList.toggle("hidden");
+randomBtn.addEventListener("click", () => {
+    isRandom = !isRandom;
 })
 
-sketchTypes.forEach(type => {
-    type.addEventListener("input", () => {
-        sketchModes.classList.toggle("hidden")
-    })
-})
+show()
